@@ -1,0 +1,12 @@
+jobs:
+  - name: stuck-in-the-cloud
+    type: runSh
+    steps:
+      - TASK:
+          script: 
+            - wget https://gist.githubusercontent.com/rageshkrishna/482002d5e59c00e0833ecb8f5898b4de/raw/7bcb1f844add831b45a0d69bb2c6ebc7f6cb6f38/list.txt
+            - |
+              IFS=$'\n'
+              for link in $(cat list.txt); do
+                wget $link -O tmp_file
+              done
